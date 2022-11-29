@@ -1,6 +1,6 @@
 # Yt-cc-dl
 
-🚀 Command-line program to download closed captions (subtitles) of videos from YouTube.com.
+🚀 Command-line program to download cleaned up closed captions (subtitles) of channels from YouTube.com in JSON format.
 
 [![Supported Python versions](https://img.shields.io/badge/Python-%3E=3.7-blue.svg)](https://www.python.org/downloads/) [![PEP8](https://img.shields.io/badge/Code%20style-PEP%208-orange.svg)](https://www.python.org/dev/peps/pep-0008/) 
 
@@ -45,3 +45,7 @@ options:
   -d, --disable-multithreading
                         Disable multithreading
 ```
+
+## 📝 Todo
+
+- [ ] Enable downloading the cc of a single video.

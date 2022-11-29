@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "yt-cc-dl"
-version = "0.1.0"
+version = "0.1.2"
 description = "Command-line program to download closed captions (subtitles) of videos from YouTube.com"
 authors = ["Alyetama <malyetama@pm.me>"]
 license = "MIT"
