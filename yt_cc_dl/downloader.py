@@ -278,7 +278,8 @@ class DownloadYoutubeSubtitles:
 
         self.logger.info(f'Processing channel: {channel_url}')
         if not self.output_dir:
-            self.output_dir = f'{Path(channel_url).name}_subtitles'
+            self.output_dir = f'{Path(channel_url).name}_subtitles'.replace(
+                '@', '')
         self._check_output_dir()
 
         channel_data = self.get_channel_data(channel_url)

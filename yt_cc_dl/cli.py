@@ -23,7 +23,8 @@ def _opts() -> argparse.Namespace:
         'The list may contain "all" for all available languages. The language '
         'can be prefixed with a "-" to exclude it from the requested '
         'languages (e.g., all,-live_chat)',
-        type=str)
+        type=str,
+        default='en')
     parser.add_argument(
         '-i',
         '--indent',
