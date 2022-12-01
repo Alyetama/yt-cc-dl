@@ -55,6 +55,11 @@ class DownloadYoutubeSubtitles:
         else:
             self.output_dir = '.'
 
+    @staticmethod
+    def _time_to_seconds(time_obj: datetime.time) -> int:
+        return (time_obj.hour * 60 + time_obj.minute) * 60 + time_obj.second
+
+
     def download_subtitles(self,
                            entry: dict,
                            skip_downloaded: bool = True,
@@ -224,18 +229,25 @@ class DownloadYoutubeSubtitles:
                     f'{vtt_file}! Skipping the caption at index no. {k}...')
                 continue
 
+            start_in_seconds = self._time_to_seconds(start.time())
+            ts_url = f'https://youtu.be/{info["id"]}&t={start_in_seconds}'
+
             d = {
-                'id': start.timestamp(),
-                'timestamp_start': str(start),
-                'timestamp_end': str(end),
-                'caption': v['caption']
+                '_id': start.timestamp(),
+                'video_id': info['id'],
+                'title': info['title'],
+                'date': str(start.date()),
+                'timestamp_start': str(start.time()),
+                'timestamp_end': str(end.time()),
+                'timestamp_start_seconds': start_in_seconds,
+                'caption': v['caption'],
+                'timestamped_url': ts_url
             }
 
             if rich_data:
                 d = {
-                    'id': d['id'],
-                    'title': info['title'],
-                    **d, 'video_url': f'https://youtu.be/{info["id"]}',
+                    '_id': d['_id'],
+                    **d,
                     'thumbnail': thumb
                 }
             data_timestamped.append(d)
