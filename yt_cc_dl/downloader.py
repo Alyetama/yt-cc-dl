@@ -106,7 +106,11 @@ class DownloadYoutubeSubtitles:
                     f'[{video_id}] Already downloaded! Skipping...')
                 return
 
-            return_code = ydl.download(video_url)
+            try:
+                return_code = ydl.download(video_url)
+            except yt_dlp.utils.DownloadError as e:
+                logger.error(e)
+                return
             if return_code != 0 or len(
                     list(Path('.').glob(existing_files_pattern))) != len(
                         yt_opts.get('subtitleslangs')):
