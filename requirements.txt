@@ -1,4 +1,5 @@
 requests>=2.2
-yt_dlp==2022.11.11
+requests-toolbelt>=1.0.0
 loguru>=0.6.0
 tqdm>=4.64.0
+yt_dlp
